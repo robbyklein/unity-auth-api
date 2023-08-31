@@ -25,7 +25,7 @@ const login = async (req: Request, res: Response) => {
     }
 
     // Create a token
-    var token = jwt.sign({ sub: user.id, email: user.email }, process.env.JWT_SECRET || '')
+    const token = jwt.sign({ sub: user.id, email: user.email }, process.env.JWT_SECRET || '')
 
     // Send it to the user
     res.json({ token })

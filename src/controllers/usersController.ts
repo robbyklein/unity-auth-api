@@ -2,6 +2,7 @@ import bcrypt from 'bcryptjs'
 import { Request, Response } from 'express'
 import validateEmail from '../helpers/validateEmail'
 import prisma from '../initializers/prisma'
+import jwt from 'jsonwebtoken'
 
 const create = async (req: Request, res: Response) => {
   try {
@@ -26,7 +27,10 @@ const create = async (req: Request, res: Response) => {
       },
     })
 
-    res.json({ success: 'Signed up successfully!' })
+    // Create a token
+    const token = jwt.sign({ sub: user.id, email: user.email }, process.env.JWT_SECRET || '')
+
+    res.json({ token })
   } catch (err) {
     const error = err as Error
 

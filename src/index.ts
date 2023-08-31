@@ -16,7 +16,7 @@ app.use(cors())
 app.use(bodyParser.json())
 
 // Routing
-app.post('/users', usersController.create)
+app.post('/signup', usersController.create)
 app.post('/login', authController.login)
 app.post('/validate', authController.validate)
 
