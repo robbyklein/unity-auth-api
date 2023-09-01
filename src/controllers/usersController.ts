@@ -32,6 +32,7 @@ const create = async (req: Request, res: Response) => {
 
     res.json({ token })
   } catch (err) {
+    console.error(err)
     const error = err as Error
 
     if (error.name == 'PrismaClientKnownRequestError') {

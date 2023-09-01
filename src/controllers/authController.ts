@@ -30,6 +30,7 @@ const login = async (req: Request, res: Response) => {
     // Send it to the user
     res.json({ token })
   } catch (err) {
+    console.error(err)
     res.status(401).json({ error: 'Invalid email or password.' })
   }
 }
@@ -41,6 +42,7 @@ const validate = async (req: Request, res: Response) => {
 
     res.json(decoded)
   } catch (err) {
+    console.error(err)
     res.status(401).json({ error: 'Unauthorized' })
   }
 }
